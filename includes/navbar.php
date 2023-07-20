@@ -43,169 +43,92 @@
             </li>
 
             <!-- Nav Item - Candidate Accordion -->
-            <?php
-                $sq = "SELECT package FROM accounts WHERE id='".$_SESSION['userRel']."'";
-                $res = mysqli_query($conn,$sq);
-                while($row = mysqli_fetch_array($res)){
-                    $package = $row['package'];
-                }
-                if($_SESSION['id'] == 3 || $package == "WFH (MONTHLY)" || $package == "WFH (YEARLY)"){
-                    echo'<li class="nav-item">
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCompany"
-                            aria-expanded="true" aria-controls="collapseCompany">
-                                <i class="fas fa-industry"></i>
-                                <span><strong>Company</strong></span>
-                            </a>
-                            <div id="collapseCompany" class="collapse" aria-labelledby="headingCompany" data-parent="#accordionSidebar">
-                                <div class="bg-white py-2 collapse-inner rounded">
-                                    <a class="collapse-item" href="company.php"><strong>All Companies</strong></a>
-                                </div>
-                            </div>
-                        </li>';
-                }elseif($_SESSION['id'] != 3){
-                    echo'<li class="nav-item">
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCandidate"
-                            aria-expanded="true" aria-controls="collapseCandidate">
-                            <i class="fas fa-user"></i>
-                            <span><strong>Candidate</strong></span>
-                        </a>
-                        <div id="collapseCandidate" class="collapse" aria-labelledby="headingCandidate" data-parent="#accordionSidebar">
-                            <div class="bg-white py-2 collapse-inner rounded">
-                                <a class="collapse-item" href="candidates.php"><strong>All Candidates</strong></a>
-                            </div>
-                        </div>
-                    </li>';
-            //Nav Item - Company Accordion
-                    if($package=="BASIC (MONTHLY)" || $package=="BASIC (YEARLY)" || $package=="SMART (MONTHLY)" || $package=="SMART (YEARLY)"){
-                        echo'';
-                    }else{
-                        echo'<li class="nav-item">
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCompany"
-                            aria-expanded="true" aria-controls="collapseCompany">
-                                <i class="fas fa-industry"></i>
-                                <span><strong>Company</strong></span>
-                            </a>
-                            <div id="collapseCompany" class="collapse" aria-labelledby="headingCompany" data-parent="#accordionSidebar">
-                                <div class="bg-white py-2 collapse-inner rounded">
-                                    <a class="collapse-item" href="company.php"><strong>All Companies</strong></a>
-                                </div>
-                            </div>
-                        </li>';
-                    }
-            }
-            ?>
-
-            <!-- Nav Item - Vendor Accordion -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseVendor"
-                    aria-expanded="true" aria-controls="collapseVendor">
-                    <i class="fas fa-store"></i>
-                    <span><strong>Vendors</strong></span>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCandidate"
+                    aria-expanded="true" aria-controls="collapseCandidate">
+                    <i class="fas fa-user"></i>
+                    <span><strong>Candidate</strong></span>
                 </a>
-                <div id="collapseVendor" class="collapse" aria-labelledby="headingVendor" data-parent="#accordionSidebar">
+                <div id="collapseCandidate" class="collapse" aria-labelledby="headingCandidate" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="vendors.php"><strong>All Vendors</strong></a>
+                        <a class="collapse-item" href="candidates.php"><strong>All Candidates</strong></a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCompany"
+                aria-expanded="true" aria-controls="collapseCompany">
+                    <i class="fas fa-industry"></i>
+                    <span><strong>Company</strong></span>
+                </a>
+                <div id="collapseCompany" class="collapse" aria-labelledby="headingCompany" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="company.php"><strong>All Companies</strong></a>
                     </div>
                 </div>
             </li>
 
             <!-- Nav Item - Jobs Accordion -->
-            <?php
-                if($_SESSION['id']==3){
-                    echo '';
-                }elseif($_SESSION['id']!=3){
-                    if($package=="BASIC (MONTHLY)" || $package=="BASIC (YEARLY)" || $package=="SMART (MONTHLY)" || $package=="SMART (YEARLY)" || $package=="WFH (MONTHLY)" || $package=="WFH (YEARLY)"){
-                        echo'';
-                    }else{
-                        echo'<li class="nav-item">
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseJobs"
-                                aria-expanded="true" aria-controls="collapseJobs">
-                                <i class="fas fa-briefcase"></i>
-                                <span><strong>Jobs</strong></span>
-                            </a>
-                            <div id="collapseJobs" class="collapse" aria-labelledby="headingJobs" data-parent="#accordionSidebar">
-                                <div class="bg-white py-2 collapse-inner rounded">
-                                    <a class="collapse-item" href="vacancy.php"><strong>Vacancy</strong></a>
-                                    <a class="collapse-item" href="interview-sent.php"><strong>Interview Sent</strong></a>
-                                    <a class="collapse-item" href="joined-list.php"><strong>Joined List</strong></a>
-                                </div>
-                            </div>
-                        </li>';
-                    }
-                }
-                ?>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseJobs"
+                    aria-expanded="true" aria-controls="collapseJobs">
+                    <i class="fas fa-briefcase"></i>
+                    <span><strong>Jobs</strong></span>
+                </a>
+                <div id="collapseJobs" class="collapse" aria-labelledby="headingJobs" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="vacancy.php"><strong>Vacancy</strong></a>
+                        <a class="collapse-item" href="interview-sent.php"><strong>Interview Sent</strong></a>
+                        <a class="collapse-item" href="joined-list.php"><strong>Joined List</strong></a>
+                    </div>
+                </div>
+            </li>
 
             <!-- Nav Item - Accounts Accordion -->
-            <?php
-                if($_SESSION['id']==2 || $_SESSION['id']==3 || $package=="WFH (MONTHLY)" || $package=="WFH (YEARLY)"){
-                    echo '';
-                }elseif ($_SESSION['id']!=2 || $_SESSION['id']!=3){
-                    echo '<li class="nav-item">
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAccounts"
-                                aria-expanded="true" aria-controls="collapseAccounts">
-                                <i class="fas fa-rupee-sign"></i>
-                                <span><strong>Accounts</strong></span>
-                            </a>
-                            <div id="collapseAccounts" class="collapse" aria-labelledby="headingAccounts" data-parent="#accordionSidebar">
-                                <div class="bg-white py-2 collapse-inner rounded">
-                                    <a class="collapse-item" href="payments.php"><strong>Payments</strong></a>
-                                    <a class="collapse-item" href="invoice-company.php"><strong>Company - Invoices</strong></a>
-                                    <a class="collapse-item" href="invoice-candidates.php"><strong>Candidates - Invoices</strong></a>
-                                    <a class="collapse-item" href="quotations.php"><strong>Quotations</strong></a>
-                                    <a class="collapse-item" href="expenses-all.php"><strong>Expenses</strong></a>
-                                </div>
-                            </div>
-                        </li>';
-                }
-            ?>
-            <?php
-                if($_SESSION['id']==2 || $_SESSION['id']==3){
-                    echo '';
-                }elseif ($_SESSION['id']!=2 || $_SESSION['id']!=3){
-                    if($package=="WFH (MONTHLY)" || $package=="WFH (YEARLY)"){
-                        echo '';
-                    }else{
-                        echo '<li class="nav-item">
-                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSettings"
-                                    aria-expanded="true" aria-controls="collapseSettings">
-                                    <i class="fas fa-cog"></i>
-                                    <span><strong>Settings</strong></span>
-                                </a>
-                                <div id="collapseSettings" class="collapse" aria-labelledby="headingSettings" data-parent="#accordionSidebar">
-                                    <div class="bg-white py-2 collapse-inner rounded">
-                                        <a class="collapse-item" href="settings.php"><strong>General Settings</strong></a>
-                                        <a class="collapse-item" href="payment-details.php"><strong>Payment Settings</strong></a>
-                                        <a class="collapse-item" href="settings-addcontents.php"><strong>Add Contents</strong></a>
-                                    </div>
-                                </div>
-                            </li>';
-                    }
-                }
-            ?>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAccounts"
+                    aria-expanded="true" aria-controls="collapseAccounts">
+                    <i class="fas fa-rupee-sign"></i>
+                    <span><strong>Accounts</strong></span>
+                </a>
+                <div id="collapseAccounts" class="collapse" aria-labelledby="headingAccounts" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="payments.php"><strong>Payments</strong></a>
+                        <a class="collapse-item" href="invoice-company.php"><strong>Company - Invoices</strong></a>
+                        <a class="collapse-item" href="invoice-candidates.php"><strong>Candidates - Invoices</strong></a>
+                        <a class="collapse-item" href="quotations.php"><strong>Quotations</strong></a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSettings"
+                    aria-expanded="true" aria-controls="collapseSettings">
+                    <i class="fas fa-cog"></i>
+                    <span><strong>Settings</strong></span>
+                </a>
+                <div id="collapseSettings" class="collapse" aria-labelledby="headingSettings" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="settings.php"><strong>General Settings</strong></a>
+                        <a class="collapse-item" href="payment-details.php"><strong>Payment Settings</strong></a>
+                        <a class="collapse-item" href="settings-addcontents.php"><strong>Add Contents</strong></a>
+                    </div>
+                </div>
+            </li>
             <!-- Nav Item - Users Accordion -->
-            <?php
-                if($_SESSION['id']==2 || $_SESSION['id']==3){
-                    echo '';
-                }elseif ($_SESSION['id']!=2 || $_SESSION['id']!=3){
-                    if($package=="BASIC (MONTHLY)" || $package=="BASIC (YEARLY)" || $package=="WFH (MONTHLY)" || $package=="WFH (YEARLY)"){
-                        echo'';
-                    }else{
-                        echo '<li class="nav-item">
-                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers"
-                                    aria-expanded="true" aria-controls="collapseUsers">
-                                    <i class="fas fa-user"></i>
-                                    <span><strong>Users</strong></span>
-                                </a>
-                                <div id="collapseUsers" class="collapse" aria-labelledby="headingUsers" data-parent="#accordionSidebar">
-                                    <div class="bg-white py-2 collapse-inner rounded">
-                                        <a class="collapse-item" href="users.php"><strong>Manage Users</strong></a>
-                                        <a class="collapse-item" href="usersreport.php"><strong>Users Report</strong></a>
-                                    </div>
-                                </div>
-                            </li>';
-                    }
-                }
-            ?>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers"
+                    aria-expanded="true" aria-controls="collapseUsers">
+                    <i class="fas fa-user"></i>
+                    <span><strong>Users</strong></span>
+                </a>
+                <div id="collapseUsers" class="collapse" aria-labelledby="headingUsers" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="users.php"><strong>Manage Users</strong></a>
+                        <a class="collapse-item" href="usersreport.php"><strong>Users Report</strong></a>
+                    </div>
+                </div>
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 

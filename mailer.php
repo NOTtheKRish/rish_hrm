@@ -45,7 +45,7 @@ use PHPMailer\PHPMailer\Exception;
                     <div class="card mb-4"><!-- Main Card Start -->
                         <div class="card-header py-3 d-sm-flex align-items-center justify-content-between mb-4">
                             <h5 class="m-0 font-weight-bold text-primary">Send a Mail</h5>
-                            <a class="d-none d-sm-inline-block btn btn-circle btn-danger" id="closeBtn" href="index.php">
+                            <a class="d-none d-sm-inline-block btn btn-sm btn-circle btn-danger" id="closeBtn" href="index.php">
                                 <i class="fas fa-times pt-1"></i>
                             </a>
                     </div>
