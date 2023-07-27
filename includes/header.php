@@ -2,11 +2,7 @@
 <html lang="en">
 <?php
     include_once('includes/dbconfig.php');
-    if(!isset($_SESSION['userRel'])){
-        $sql="SELECT * FROM settings WHERE entry_by='1'";
-    }elseif(isset($_SESSION['userRel'])){
-        $sql="SELECT * FROM settings WHERE entry_by='".$_SESSION['userRel']."'";
-    }
+    $sql="SELECT * FROM settings WHERE entry_by='1'";
     $result=mysqli_query($conn,$sql);
     while($row=mysqli_fetch_array($result)){
 ?>

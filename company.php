@@ -2,7 +2,7 @@
 include('session.php');
 include('includes/header.php');
 include('includes/navbar.php');
-include('includes/packageCheck.php');
+
 include_once('includes/dbconfig.php');
 ?>
 
@@ -41,7 +41,7 @@ include_once('includes/dbconfig.php');
                         <div class="card-header py-3 d-sm-flex align-items-center justify-content-between">
                             <h6 class="m-0 font-weight-bold text-primary">Details</h6>
                             <?php
-                                if(isset($_GET['company'])||isset($_GET['entry_by'])){
+                                if(isset($_GET['company']) || isset($_GET['entry_by'])){
                                     echo'<a class="d-none d-sm-inline-block btn btn-danger shadow-sm" href="company.php">
                                         <i class="fas fa-minus-circle text-white-50"></i>
                                         Remove Filters
@@ -58,25 +58,25 @@ include_once('includes/dbconfig.php');
                             <!-- Create New Company Zone Starts -->
                             <?php
                                 if (isset($_POST["create"])){
-                                    $previous=$_POST['previous'];
+                                    $previous = $_POST['previous'];
 
-                                    $co="SELECT com FROM accounts WHERE id='".$_SESSION['userRel']."'";
-                                    $cou=mysqli_query($conn,$co);
-                                    while($coun=mysqli_fetch_array($cou)){
-                                        $count=($coun['com'])+1;
+                                    $co = "SELECT com FROM accounts WHERE id='".$_SESSION['userRel']."'";
+                                    $cou = mysqli_query($conn,$co);
+                                    while($coun = mysqli_fetch_array($cou)){
+                                        $count = ($coun['com'])+1;
                                     }
                                     // Data being Inserted into the Database
-                                    $entry_by=$_SESSION['userRel'];
-                                    $userId=$_SESSION['userId'];
+                                    $entry_by = $_SESSION['userRel'];
+                                    $userId = $_SESSION['userId'];
                                     date_default_timezone_set('Asia/Kolkata');
                                     $created_at = date('Y-m-d H:i:s');
-                                    $sql="INSERT INTO company (com_id,name,contact_person,number,add_number,email,gst_no,buy_interest,industry_type,address,entry_by,user_id,created_at)
-                                    VALUES ('".$count."','".$_POST['com_name']."','".$_POST['contact_person']."','".$_POST['number']."','".$_POST['add_number']."','".$_POST['com_email']."','".$_POST['gst_no']."','".$_POST['buy_interest']."','".$_POST['industry_type']."','".$_POST['address']."','".$entry_by."','".$userId."','".$created_at."')";
+                                    $sql = "INSERT INTO company (com_id,name,contact_person,number,add_number,email,gst_no,industry_type,address,entry_by,user_id,created_at)
+                                    VALUES ('".$count."','".$_POST['com_name']."','".$_POST['contact_person']."','".$_POST['number']."','".$_POST['add_number']."','".$_POST['com_email']."','".$_POST['gst_no']."','".$_POST['industry_type']."','".$_POST['address']."','".$entry_by."','".$userId."','".$created_at."')";
                                     $result=mysqli_query($conn,$sql);
 
                                     //updating com count in accounts table
-                                    $sql="UPDATE accounts SET com='".$count."' WHERE id='".$_SESSION['userRel']."'";
-                                    $res=mysqli_query($conn,$sql);
+                                    $sql = "UPDATE accounts SET com = '".$count."' WHERE id='".$_SESSION['userRel']."'";
+                                    $res = mysqli_query($conn,$sql);
                                     echo '<script type="text/javascript">
                                                 setTimeout(function(){
                                                     swal({
@@ -96,20 +96,18 @@ include_once('includes/dbconfig.php');
                             <!-- Edit Company Zone Starts -->
                             <?php
                                 if (isset($_POST["update"])){
-                                    $previous=$_POST['previous'];
-                                    $com_id=$_POST['com_id'];
-                                    $com_name=$_POST['com_name'];
-                                    $contact_person=$_POST['contact_person'];
-                                    $number=$_POST['number'];
-                                    $add_number=$_POST['add_number'];
-                                    $email=$_POST['com_email'];
-                                    $gst=$_POST['gst_no'];
-                                    $address=$_POST['address'];
-                                    $industry_type=$_POST['industry_type'];
-                                    $sql="UPDATE company
-                                    SET name='".$com_name."', contact_person='".$contact_person."', number='".$number."', add_number='".$add_number."', email='".$email."',gst_no='".$gst."',industry_type='".$industry_type."',address='".$address."'
-                                    WHERE id='".$com_id."'";
-                                    $query=mysqli_query($conn,$sql);
+                                    $previous = $_POST['previous'];
+                                    $com_id = $_POST['com_id'];
+                                    $com_name = $_POST['com_name'];
+                                    $contact_person = $_POST['contact_person'];
+                                    $number = $_POST['number'];
+                                    $add_number = $_POST['add_number'];
+                                    $email = $_POST['com_email'];
+                                    $gst = $_POST['gst_no'];
+                                    $address = $_POST['address'];
+                                    $industry_type = $_POST['industry_type'];
+                                    $sql = "UPDATE company SET name='".$com_name."', contact_person='".$contact_person."', number='".$number."', add_number='".$add_number."', email='".$email."',gst_no='".$gst."',industry_type='".$industry_type."',address='".$address."' WHERE id='".$com_id."'";
+                                    $query = mysqli_query($conn,$sql);
 
                                     echo '<script type="text/javascript">
                                                 setTimeout(function(){
@@ -130,10 +128,10 @@ include_once('includes/dbconfig.php');
                             <!-- Delete Company Zone Starts -->
                             <?php
                                 if (isset($_POST["delete"])){
-                                    $delete_id=$_POST['com_id'];
-                                    $previous=$_POST['previous'];
-                                    $sql="DELETE FROM company WHERE id='".$delete_id."'";
-                                    $result=mysqli_query($conn,$sql);
+                                    $delete_id = $_POST['com_id'];
+                                    $previous = $_POST['previous'];
+                                    $sql = "DELETE FROM company WHERE id='".$delete_id."'";
+                                    $result = mysqli_query($conn,$sql);
                                     echo '<script type="text/javascript">
                                                 setTimeout(function(){
                                                     swal({
@@ -302,7 +300,6 @@ include_once('includes/dbconfig.php');
                                             <td style="text-align:center;"><?php echo'<a class="btn btn-circle btn-primary mb-1" href="company-view.php?id='.$row['id'].'" style="font-size:1rem;"><i class="fas fa-eye"></i></a>
                                             <a class="btn btn-circle btn-primary mr-1 mb-1" href="vacancy-create.php?company='.$row['id'].'" style="font-size:1rem;"><i class="fas fa-plus-square"></i></a>';
                                             echo'<a class="btn btn-circle btn-success mr-1" target="_blank" href="https://wa.me/91'.$row['number'].'"><i class="fab fa-lg fa-whatsapp"></i></a><br>';
-                                            echo'<a class="btn btn-circle btn-primary mr-1" target="_blank" href="mailer.php?email='.$row['email'].'"><i class="fas fa-lg fa-envelope"></i></a>';
                                             echo'<a class="btn btn-circle btn-primary mr-1" href="company-edit.php?id='.$row['id'].'" style="font-size:1rem;"><i class="fas fa-pen"></i></a>';
                                             if($_SESSION['id']==2){
                                                 echo '</td>';

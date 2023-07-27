@@ -70,7 +70,6 @@ include_once('includes/dbconfig.php');
                                             <select class="form-control" name="role">
                                                 <option value="">Select Role</option>
                                                 <option value="2">STAFF</option>
-                                                <option value="3">FREELANCER</option>
                                             </select>
                                         </div>
                                         <div class="form-group col-md-8">

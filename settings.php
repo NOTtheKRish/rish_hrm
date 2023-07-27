@@ -2,7 +2,7 @@
 include('session.php');
 include('includes/header.php');
 include('includes/navbar.php');
-include('includes/packageCheck.php');
+
 include_once('includes/dbconfig.php');
 ?>
 
@@ -41,7 +41,7 @@ include_once('includes/dbconfig.php');
                             $email=$_POST['email'];
                             $gst_no=$_POST['gst_no'];
                             $number=$_POST['number'];
-                            $sql="UPDATE settings SET name='".$name."', address='".$address."', email='".$email."',gst_no='".$gst_no."', number='".$number."' WHERE entry_by='".$_SESSION['userRel']."'";
+                            $sql="UPDATE settings SET name='".$name."', address='".$address."', email='".$email."',gst_no='".$gst_no."', number='".$number."' WHERE entry_by = 1";
                             $result=mysqli_query($conn,$sql);
                             echo '<script type="text/javascript">
                                     setTimeout(function(){
@@ -66,32 +66,15 @@ include_once('includes/dbconfig.php');
                                 <li class="nav-item">
                                     <a class="nav-link" href="logoupload.php"><strong>Manage Logo</strong></a>
                                 </li>
-                                <?php
-                                    $sq="SELECT package FROM accounts WHERE id='".$_SESSION['userRel']."'";
-                                    $res=mysqli_query($conn,$sq);
-                                    while($row=mysqli_fetch_array($res)){
-                                        $package=$row['package'];
-                                    }
-                                    if($package=="BASIC (MONTHLY)" || $package=="BASIC (YEARLY)"){
-                                        echo'';
-                                    }else{
-                                        echo'<li class="nav-item">
-                                            <a class="nav-link" href="users.php"><strong>Users</strong></a>
-                                        </li>';
-                                    }
-                                ?>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="payment-details.php"><strong>Payment Details</strong></a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="settings-addcontents.php"><strong>Add Contents</strong></a>
+                                    <a class="nav-link" href="users.php"><strong>Users</strong></a>
                                 </li>
                             </ul>
                         </div>
                         <div class="card-body">
                             <div class="text-center">
                                 <?php
-                                        $sql="SELECT * FROM settings WHERE entry_by='".$_SESSION['userRel']."'";
+                                        $sql="SELECT * FROM settings WHERE entry_by = 1";
                                         $result=mysqli_query($conn,$sql);
                                         while($row=mysqli_fetch_array($result)){
                                     ?>

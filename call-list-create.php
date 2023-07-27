@@ -117,7 +117,7 @@ include_once("includes/dbconfig.php");
                                     </div>
                                     <div class="form-group col-md-4">Location
                                         <div class="form-input my-2">
-                                            <input class="form-control" name="location" type="text" value="<?php echo $row['location']; ?>">
+                                            <input class="form-control" name="location" type="text" value="">
                                         </div>
                                     </div>
                                 </div>

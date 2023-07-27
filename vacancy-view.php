@@ -2,7 +2,7 @@
 include('session.php');
 include('includes/header.php');
 include('includes/navbar.php');
-include('includes/packageCheck.php');
+
 include_once("includes/dbconfig.php");
 ?>
 

@@ -2,7 +2,7 @@
 include('session.php');
 include('includes/header.php');
 include('includes/navbar.php');
-include('includes/packageCheck.php');
+
 include_once('includes/dbconfig.php');
 ?>
 
@@ -56,37 +56,6 @@ include_once('includes/dbconfig.php');
                                         If needed add contents same sa <thead>
                                     </tfoot> -->
                                     <?php
-                                        // Maximum results in a page - $pagereslimit variable
-                                        // Results Order By value Check and Manipulating 
-                                            $order="DESC";
-                                        // Dynamic Page Result Limit Check and Manipulating
-                                            if(!isset($_GET['show'])){
-                                                $pagereslimit = 10;
-                                            }else{
-                                                $pagereslimit = $_GET['show'];
-                                            }
-                                        // Finding out the total number of data in the table
-                                            $sql = "SELECT * FROM vendors";
-                                            $result = mysqli_query($conn,$sql);
-                                            $result_num = mysqli_num_rows($result);
-                                        // Determine number of total pages available
-                                            $pagenumbers = ceil($result_num/$pagereslimit);
-                                        // Determine which page the visitor is currently on
-                                            if(!isset($_GET['page'])){
-                                                $page = 1;
-                                            }else{
-                                                $page = $_GET['page'];
-                                            }
-                                        // Determine maximum results for a page according to a page's result SQL limit
-                                            $pagefirstvalue = ($page-1)*$pagereslimit;
-                                        // Retrieve selective values according to the page limit
-                                        //Searching with Candidate ID
-                                            if(!isset($_GET['vendors'])){
-                                                $sql= 'SELECT * FROM vendors ORDER BY id '.$order.' LIMIT '.$pagefirstvalue.','.$pagereslimit;
-                                            }else{
-                                                $company=$_GET['vendors'];
-                                                $sql= "SELECT * FROM vendors WHERE name LIKE '%".$company."%' LIMIT ".$pagefirstvalue.",".$pagereslimit;
-                                            }
                                         // Get Resume File Name
                                             if(isset($_GET['resume'])){
                                                 $resume=$_GET['resume'];

@@ -44,10 +44,10 @@ include_once("includes/dbconfig.php");
                     </div>
                         <div class="card-body">
                             <?php
-                                $view_data=$_GET['id'];
-                                $sql= 'SELECT * FROM company WHERE id='.$view_data.'';
+                                $view_data = $_GET['id'];
+                                $sql = 'SELECT * FROM company WHERE id='.$view_data.'';
                                 $result = mysqli_query($conn, $sql);
-                                    while($row= mysqli_fetch_array($result)){
+                                    while($row = mysqli_fetch_array($result)){
                             ?>
                             <!-- Video Details Start -->
                                     <div class="form-group row">
@@ -78,12 +78,6 @@ include_once("includes/dbconfig.php");
                                         <label for="contact_person" class="col-sm-2 col-form-label">Contact Person</label>
                                         <div class="col-sm-10">
                                             <?php echo'<input style="color:#000;" type="text" readonly class="form-control-plaintext" name="contact_person" value="'.$row['contact_person'].'">';?>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="buy_interest" class="col-sm-2 col-form-label">Interested to Buy</label>
-                                        <div class="col-sm-10">
-                                            <?php echo'<input style="color:#000;" type="text" readonly class="form-control-plaintext" name="buy_interest" value="'.$row['buy_interest'].'">';?>
                                         </div>
                                     </div>
                                     <div class="form-group row">

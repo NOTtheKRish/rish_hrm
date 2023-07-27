@@ -6,7 +6,7 @@
             data-toggle="dropdown">
             <span class="mr-2 d-none d-lg-inline text-gray-600 small">
                 <strong>
-                <?php echo $_SESSION['name']?>
+                    <?php echo $_SESSION['name']?>
                 </strong>
             </span>
             <img class="img-profile rounded-circle"
@@ -14,16 +14,16 @@
         </a>
         <!-- Dropdown - User Information -->
         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in">
+            <a class="dropdown-item" href="profile.php"><i class="fas fa-user-circle mr-2"></i>Profile</a>
             <?php
-                if($_SESSION['id']==2 || $_SESSION['id']==3){
-                    echo '';
-                }elseif($_SESSION['id']!=2 || $_SESSION['id']!=3){
-                    echo '<a class="dropdown-item" href="profile.php"><i class="fas fa-user-circle mr-2"></i>Profile</a>
-                        <a class="dropdown-item" href="settings.php"><i class="fas fa-cog mr-2"></i>Settings</a>
-                        <a class="dropdown-item" href="package.php"><i class="far fa-credit-card mr-2"></i>Subscription</a>
-                        <div class="dropdown-divider"></div>';
+                if($_SESSION['id'] != 2){
+                // settings not allowed for staffs
+            ?>
+                    <a class="dropdown-item" href="settings.php"><i class="fas fa-cog mr-2"></i>Settings</a>
+            <?php
                 }
             ?>
+            <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="logout.php" data-toggle="modal" data-target="#logoutModal">
                 <i class="fas fa-sign-out-alt mr-2"></i>
                 Logout

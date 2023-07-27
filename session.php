@@ -7,8 +7,8 @@
     header('Location: login.php');
     exit;
   }else{
-    $currentTime=time();
-    if($currentTime>=$_SESSION['expire']){
+    $currentTime = time();
+    if($currentTime >= $_SESSION['expire']){
         session_unset();
         session_destroy();
         header('Location: login.php');

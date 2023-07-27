@@ -37,12 +37,12 @@ include_once('includes/dbconfig.php');
                     <?php
                     //Edit Profile Zone Starts
                         if (isset($_POST['update'])){
-                            $username=$_POST['username'];
-                            $name=$_POST['name'];
-                            $email=$_POST['email'];
-                            $sql="UPDATE accounts SET username='".$username."', name='".$name."', email='".$email."' 
-                            WHERE id='".$_POST['userid']."'";
-                            $query=mysqli_query($conn,$sql);
+                            $username = $_POST['username'];
+                            $name = $_POST['name'];
+                            $email = $_POST['email'];
+                            $sql = "UPDATE accounts SET username='".$username."', name='".$name."', email='".$email."' 
+                            WHERE id = '".$_POST['userid']."'";
+                            $query = mysqli_query($conn,$sql);
                             echo '<script type="text/javascript">
                                         setTimeout(function(){
                                             swal({
@@ -67,7 +67,7 @@ include_once('includes/dbconfig.php');
                                     //Storing the result so that we can check if the account exists in database
                                     $stmt->store_result();
 
-                                    if ($stmt->num_rows>0){
+                                    if ($stmt->num_rows > 0){
                                         $stmt->bind_result($password);
                                         $stmt->fetch();
                                         // Now, we verify the current password
@@ -118,22 +118,19 @@ include_once('includes/dbconfig.php');
                                     aria-labelledby="dropdownProfileMenu">
                                     <a class="dropdown-item" href="profile-edit.php"><i class="fas fa-user-edit mr-2"></i>Edit Profile</a>
                                     <a class="dropdown-item" href="edit-password.php"><i class="fas fa-lock mr-2"></i>Change Password</a>
-                                    <a class="dropdown-item" href="package.php"><i class="far fa-credit-card mr-2"></i>Subscription</a>
-                                <div class="dropdown-divider"></div>
+                                    <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="logout.php" data-toggle="modal" data-target="#logoutModal"><i class="fas fa-sign-out-alt mr-2"></i>Logout</a>
                                 </div>
                             </div>
                         </div>
                         <div class="card-body">
                             <?php
-                                $sql="SELECT name,username,email,package,package_expiry,created_at FROM accounts WHERE id='".$_SESSION['userId']."'";
+                                $sql="SELECT name,username,email,created_at FROM accounts WHERE id='".$_SESSION['userId']."'";
                                 $request=mysqli_query($conn,$sql);
                                 while($row=mysqli_fetch_array($request)){
                                     // Changing Date Format to display as 19 Dec 2003 04:00 PM
                                     $created=date_create($row['created_at']);
                                     $created_at=date_format($created,"d M, Y h:i A");
-                                    $exp=date_create($row['package_expiry']);
-                                    $expiry=date_format($exp,"d M, Y h:i A");
                             ?>
                             <div class="form-row">
                                 <div class="form-group col-md-7">
@@ -158,23 +155,6 @@ include_once('includes/dbconfig.php');
                                         <div class="col-md-10 my-2">
                                             <span><strong>Created At:</strong> <?php echo $created_at ?></span>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row mt-3">
-                                <div class="form-group mx-auto my-auto col-md-12">
-                                    <h4 class="col-sm-3 mb-3"><strong>Package Details</strong></h4>
-                                    <div class="col-md-10 my-2">
-                                        <?php
-                                        if($row['package']=="INFINITY"){
-                                            echo'<strong>Package Name :</strong><label class="ml-2 badge text-white" style="background-color:#613DC1;">'.$row['package'].'</label>';
-                                        }else{
-                                            echo'<strong>Package Name :</strong><label class="ml-2 badge bg-primary text-white">'.$row['package'].'</label>';
-                                        }
-                                        ?>
-                                    </div>
-                                    <div class="col-md-10 my-2">
-                                        <strong>Package Validity :</strong><label class="ml-2 badge bg-danger text-white"><?php echo $expiry;?></label>
                                     </div>
                                 </div>
                             </div>

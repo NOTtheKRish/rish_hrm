@@ -36,8 +36,8 @@ include_once('includes/dbconfig.php');
                     <?php
                         if(isset($_POST["submit"])){
                             $logo=$_POST['logo'];
-                            $sql="UPDATE settings SET logo='".$logo."' WHERE entry_by='".$_SESSION['userRel']."'";
-                            $result=mysqli_query($conn,$sql);
+                            $sql = "UPDATE settings SET logo='".$logo."' WHERE entry_by = 1";
+                            $result = mysqli_query($conn,$sql);
                             echo '<script type="text/javascript">
                                     setTimeout(function(){
                                         swal({
@@ -61,25 +61,8 @@ include_once('includes/dbconfig.php');
                                 <li class="nav-item">
                                     <a class="nav-link active" href="logoupload.php"><strong>Manage Logo</strong></a>
                                 </li>
-                                <?php
-                                    $sq="SELECT package FROM accounts WHERE id='".$_SESSION['userRel']."'";
-                                    $res=mysqli_query($conn,$sq);
-                                    while($row=mysqli_fetch_array($res)){
-                                        $package=$row['package'];
-                                    }
-                                    if($package=="BASIC (MONTHLY)" || $package=="BASIC (YEARLY)"){
-                                        echo'';
-                                    }else{
-                                        echo'<li class="nav-item">
-                                            <a class="nav-link" href="users.php"><strong>Users</strong></a>
-                                        </li>';
-                                    }
-                                ?>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="payment-details.php"><strong>Payment Details</strong></a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="settings-addcontents.php"><strong>Add Contents</strong></a>
+                                    <a class="nav-link" href="users.php"><strong>Users</strong></a>
                                 </li>
                             </ul>
                         </div>
@@ -108,7 +91,7 @@ include_once('includes/dbconfig.php');
                                                 }else{
                                                     move_uploaded_file($fileTmpName,$fileDestination);
                                                 }
-                                                $sql="UPDATE settings SET logo='".$fileNameNew."'WHERE entry_by='".$_SESSION['userRel']."'";
+                                                $sql="UPDATE settings SET logo='".$fileNameNew."'WHERE entry_by = 1";
                                                 $res=mysqli_query($conn,$sql);
                                                 echo '<script type="text/javascript">
                                                         setTimeout(function(){
@@ -168,7 +151,7 @@ include_once('includes/dbconfig.php');
                                                 }else{
                                                     move_uploaded_file($fileTmpName,$fileDestination);
                                                 }
-                                                $sql="UPDATE settings SET favicon='".$fileNameNew."'WHERE entry_by='".$_SESSION['userRel']."'";
+                                                $sql="UPDATE settings SET favicon='".$fileNameNew."'WHERE entry_by = 1";
                                                 $res=mysqli_query($conn,$sql);
                                                 echo '<script type="text/javascript">
                                                     setTimeout(function(){
@@ -207,9 +190,9 @@ include_once('includes/dbconfig.php');
                                 }
                             ?>
                             <?php
-                                    $sql="SELECT logo,favicon FROM settings WHERE entry_by='".$_SESSION['userRel']."'";
-                                    $result=mysqli_query($conn,$sql);
-                                    while($row=mysqli_fetch_array($result)){
+                                    $sql = "SELECT logo,favicon FROM settings WHERE entry_by = 1";
+                                    $result = mysqli_query($conn,$sql);
+                                    while($row = mysqli_fetch_array($result)){
                                 ?>
                                 <form action="logoupload.php" method="POST" enctype="multipart/form-data">
                                     <div class="form-row">

@@ -3,5 +3,4 @@
     <a href="candidates-create.php" class="btn btn-sm btn-primary mr-3">Add Candidate</a>
     <a href="company-create.php" class="btn btn-sm btn-primary mr-3">Add Company</a>
     <a href="vacancy-create.php" class="btn btn-sm btn-primary mr-3">Add JOB Vacancy</a>
-    <a href="vendors-create.php" class="btn btn-sm btn-primary mr-3">Add Vendor</a>
 </div>

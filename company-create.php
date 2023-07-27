@@ -80,13 +80,6 @@ include("includes/interestDrops.php");
                                             <input class="form-control" type="text" name="gst_no" placeholder="Enter N/A if unavailable">
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-3">Interested to Buy
-                                        <div class="form-input">
-                                            <select class="form-control" name="buy_interest">
-                                                <?php buyInterest($conn,$_SESSION['userRel']); ?>
-                                            </select>
-                                        </div>
-                                    </div>
                                     <div class="form-group col-md-3">Industry Type
                                         <div class="form-input">
                                             <select class="form-control" name="industry_type">

@@ -6,7 +6,7 @@
                 <div class="sidebar-brand-icon">
                     <?php
                         include_once('includes/dbconfig.php');
-                        $sql = "SELECT name,logo FROM settings WHERE entry_by='".$_SESSION['userRel']."'";
+                        $sql = "SELECT name,logo FROM settings WHERE entry_by = 1";
                         $result = mysqli_query($conn,$sql);
                         while($row = mysqli_fetch_array($result)){
                             echo'<img src="img/'.$row['logo'].'" style="height:55px">';
@@ -83,24 +83,9 @@
                     </div>
                 </div>
             </li>
-
-            <!-- Nav Item - Accounts Accordion -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAccounts"
-                    aria-expanded="true" aria-controls="collapseAccounts">
-                    <i class="fas fa-rupee-sign"></i>
-                    <span><strong>Accounts</strong></span>
-                </a>
-                <div id="collapseAccounts" class="collapse" aria-labelledby="headingAccounts" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="payments.php"><strong>Payments</strong></a>
-                        <a class="collapse-item" href="invoice-company.php"><strong>Company - Invoices</strong></a>
-                        <a class="collapse-item" href="invoice-candidates.php"><strong>Candidates - Invoices</strong></a>
-                        <a class="collapse-item" href="quotations.php"><strong>Quotations</strong></a>
-                    </div>
-                </div>
-            </li>
-
+            <?php
+                if($_SESSION['id'] != 2){
+            ?>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSettings"
                     aria-expanded="true" aria-controls="collapseSettings">
@@ -110,8 +95,6 @@
                 <div id="collapseSettings" class="collapse" aria-labelledby="headingSettings" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="settings.php"><strong>General Settings</strong></a>
-                        <a class="collapse-item" href="payment-details.php"><strong>Payment Settings</strong></a>
-                        <a class="collapse-item" href="settings-addcontents.php"><strong>Add Contents</strong></a>
                     </div>
                 </div>
             </li>
@@ -125,10 +108,12 @@
                 <div id="collapseUsers" class="collapse" aria-labelledby="headingUsers" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="users.php"><strong>Manage Users</strong></a>
-                        <a class="collapse-item" href="usersreport.php"><strong>Users Report</strong></a>
                     </div>
                 </div>
             </li>
+            <?php
+                }
+            ?>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 

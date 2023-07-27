@@ -2,7 +2,7 @@
 include('session.php');
 include('includes/header.php');
 include('includes/navbar.php');
-include('includes/packageCheck.php');
+
 include_once('includes/dbconfig.php');
 ?>
 
@@ -58,7 +58,7 @@ include_once('includes/dbconfig.php');
                             <!-- Create New Joined Zone Starts -->
                             <?php
                                 if (isset($_POST["create"])){
-                                    $previous=$_POST['previous'];
+                                    $previous = $_POST['previous'];
                                     echo '<script type="text/javascript">
                                             setTimeout(function(){
                                                 swal({
@@ -72,17 +72,17 @@ include_once('includes/dbconfig.php');
                                             },500);
                                         </script>';
                                     // Data being Inserted into the Database
-                                    $can_id=$_POST['can_id'];
-                                    $job_id=$_POST['job_id'];
-                                    $salary=$_POST['salary'];
-                                    $joining_date=$_POST['joining_date'];
+                                    $can_id = $_POST['can_id'];
+                                    $job_id = $_POST['job_id'];
+                                    $salary = $_POST['salary'];
+                                    $joining_date = $_POST['joining_date'];
                                     $status = $_POST['status'];
 
-                                    $entry_by=$_SESSION['userRel'];
-                                    $userId=$_SESSION['userId'];
-                                    $sql="INSERT INTO joined (can_id,job_id,salary,joined_on,entry_by,user_id,status)
+                                    $entry_by = $_SESSION['userRel'];
+                                    $userId = $_SESSION['userId'];
+                                    $sql = "INSERT INTO joined (can_id,job_id,salary,joined_on,entry_by,user_id,status)
                                     VALUES ('".$can_id."','".$job_id."','".$salary."','".$joining_date."','".$entry_by."','".$userId."','".$status."')";
-                                    $result=mysqli_query($conn,$sql);
+                                    $result = mysqli_query($conn,$sql);
                                 }
                             ?>
                             <!-- Create New Joined Zone Ends -->
@@ -90,13 +90,13 @@ include_once('includes/dbconfig.php');
                             <!-- Edit Joined Zone Starts -->
                             <?php
                                 if (isset($_POST["update"])){
-                                    $previous=$_POST['previous'];
-                                    $join_id=$_POST['join_id'];
-                                    $salary=$_POST['salary'];
-                                    $joining=$_POST['joining_date'];
+                                    $previous = $_POST['previous'];
+                                    $join_id = $_POST['join_id'];
+                                    $salary = $_POST['salary'];
+                                    $joining = $_POST['joining_date'];
                                     $status = $_POST['status'];
-                                    $sql="UPDATE joined SET joined_on='".$joining."', salary='".$salary."', status='".$status."' WHERE id='".$join_id."'";
-                                    $query=mysqli_query($conn,$sql);
+                                    $sql = "UPDATE joined SET joined_on='".$joining."', salary='".$salary."', status='".$status."' WHERE id='".$join_id."'";
+                                    $query = mysqli_query($conn,$sql);
                                     echo '<script type="text/javascript">
                                             setTimeout(function(){
                                                 swal({
@@ -116,9 +116,9 @@ include_once('includes/dbconfig.php');
                             <!-- Delete Joined Zone Starts -->
                             <?php
                                 if (isset($_POST["delete"])){
-                                    $delete_id=$_POST['join_id'];
-                                    $previous=$_POST['previous'];
-                                    $sql="DELETE FROM joined WHERE id='".$delete_id."'";
+                                    $delete_id = $_POST['join_id'];
+                                    $previous = $_POST['previous'];
+                                    $sql = "DELETE FROM joined WHERE id='".$delete_id."'";
                                     $result=mysqli_query($conn,$sql);
                                     echo '<script type="text/javascript">
                                             setTimeout(function(){
@@ -139,7 +139,7 @@ include_once('includes/dbconfig.php');
                             <div class="table-responsive">
                             <div class="dataTable-filter">
                                 <?php
-                                    if($_SESSION['id']!=2){
+                                    if($_SESSION['id'] != 2){
                                         echo'<div class="col-md-3">
                                             <form action="joined-list.php" method="GET">
                                                 <div class="mt-1">

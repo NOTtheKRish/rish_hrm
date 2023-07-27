@@ -11,7 +11,6 @@
 
 <!-- Custom JS -->
    <script type="text/javascript" src="js/custom.js"></script>
-   <script type="text/javascript" src="js/package.js"></script>
 
 <!-- Page level plugins -->
    <script src="vendor/chart.js/Chart.min.js"></script>

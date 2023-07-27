@@ -2,7 +2,7 @@
 include('session.php');
 include('includes/header.php');
 include('includes/navbar.php');
-include('includes/packageCheck.php');
+
 include_once('includes/dbconfig.php');
 ?>
 
@@ -199,7 +199,7 @@ include_once('includes/dbconfig.php');
                                                                                 if(mysqli_num_rows($result)>0){
                                                                                 while($row=mysqli_fetch_array($result)){
                                                                             ?>
-                                                                            <option value="'.$row['id'].'"><?php echo $row['name']; ?></option>
+                                                                            <option value="<?php echo $row['id']; ?>"><?php echo $row['name']; ?></option>
                                                                             <?php
                                                                                 }}
                                                                             ?>
@@ -214,7 +214,7 @@ include_once('includes/dbconfig.php');
                                                                                 if(mysqli_num_rows($result)>0){
                                                                                 while($row=mysqli_fetch_array($result)){
                                                                             ?>
-                                                                            <option value="'.$row['value'].'"><?php echo $row['value']; ?></option>
+                                                                            <option value="<?php echo $row['value']; ?>"><?php echo $row['value']; ?></option>
                                                                             <?php
                                                                                 }}
                                                                             ?>
@@ -332,8 +332,8 @@ include_once('includes/dbconfig.php');
                                                 $sql= "SELECT * FROM calls WHERE number='".$search."' OR name LIKE '%".$search."%' AND entry_by='".$userRel."' ORDER BY id ".$order." LIMIT ".$pagefirstvalue.",".$pagereslimit;
 
                                             }elseif(isset($_GET['entry_by']) && isset($_GET['status']) && $_GET['entry_by']!="" && $_GET['status']!=""){// Searching for Entry By & Call Status
-                                                $entry_by=$_GET['entry_by'];
-                                                $status=$_GET['status'];
+                                                $entry_by = $_GET['entry_by'];
+                                                $status = $_GET['status'];
                                                 $sql= "SELECT * FROM calls WHERE entry_by='".$userRel."' AND user_id='".$entry_by."' AND status='".$status."'";
                                                     $result = mysqli_query($conn,$sql);
                                                     $result_num = mysqli_num_rows($result);
@@ -586,11 +586,11 @@ include_once('includes/dbconfig.php');
                                                 }
                                             }elseif(isset($_GET['entry_by']) && isset($_GET['status'])){
                                                 if(isset($_GET['page']) && $_GET['page']==$page){
-                                                    echo '<a href="call-list.php?entry_by='.$number.'&status='.$status.'&page='.$page.'&show='.$pagereslimit.'&order='.$order.'#dataTable" class="nav-link tm-paging-link" style="border: 2px solid #14ee80;border-radius: 25px;background: #14ee80;color: #000;margin-top: 5px;margin-left: 18px;margin-bottom: 10px">'.$page.'</a>';
+                                                    echo '<a href="call-list.php?entry_by='.$entry_by.'&status='.$status.'&page='.$page.'&show='.$pagereslimit.'&order='.$order.'#dataTable" class="nav-link tm-paging-link" style="border: 2px solid #14ee80;border-radius: 25px;background: #14ee80;color: #000;margin-top: 5px;margin-left: 18px;margin-bottom: 10px">'.$page.'</a>';
                                                 }elseif(!isset($_GET['page']) && $page==1){
-                                                    echo '<a href="call-list.php?entry_by='.$number.'&status='.$status.'&page='.$page.'&show='.$pagereslimit.'&order='.$order.'#dataTable" class="nav-link tm-paging-link" style="border: 2px solid #14ee80;border-radius: 25px;background: #14ee80;color: #000;margin-top: 5px;margin-left: 18px;margin-bottom: 10px">'.$page.'</a>';
+                                                    echo '<a href="call-list.php?entry_by='.$entry_by.'&status='.$status.'&page='.$page.'&show='.$pagereslimit.'&order='.$order.'#dataTable" class="nav-link tm-paging-link" style="border: 2px solid #14ee80;border-radius: 25px;background: #14ee80;color: #000;margin-top: 5px;margin-left: 18px;margin-bottom: 10px">'.$page.'</a>';
                                                 }else{
-                                                    echo '<a href="call-list.php?entry_by='.$number.'&status='.$status.'&page='.$page.'&show='.$pagereslimit.'&order='.$order.'#dataTable" class="nav-link tm-paging-link" style="border: 2px solid #0070ff;border-radius: 25px;background: #0070ff;color: #fff;margin-top: 5px;margin-left: 18px;margin-bottom: 10px">'.$page.'</a>';
+                                                    echo '<a href="call-list.php?entry_by='.$entry_by.'&status='.$status.'&page='.$page.'&show='.$pagereslimit.'&order='.$order.'#dataTable" class="nav-link tm-paging-link" style="border: 2px solid #0070ff;border-radius: 25px;background: #0070ff;color: #fff;margin-top: 5px;margin-left: 18px;margin-bottom: 10px">'.$page.'</a>';
                                                 }
                                             }elseif(isset($_GET['status'])){
                                                 if(isset($_GET['page']) && $_GET['page']==$page){

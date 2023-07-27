@@ -2,7 +2,7 @@
 include('session.php');
 include('includes/header.php');
 include('includes/navbar.php');
-include('includes/packageCheck.php');
+
 include_once('includes/dbconfig.php');
 ?>
 
@@ -47,12 +47,6 @@ include_once('includes/dbconfig.php');
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link active" href="manage-users.php"><strong>Users</strong></a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="payment-details.php"><strong>Invoice Details</strong></a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="settings-addcontents.php"><strong>Add Contents</strong></a>
                                 </li>
                             </ul>
                         </div>
