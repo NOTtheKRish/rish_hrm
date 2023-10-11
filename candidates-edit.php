@@ -138,7 +138,7 @@ include_once("includes/dbconfig.php");
                                             <?php echo'<option value="'.$rows['jobrole'].'">'.$rows['jobrole'].'</option>';?>
                                             <option value="">Select Job Role</option>
                                             <?php
-                                                $sql="SELECT * FROM can_jobrole";
+                                                $sql="SELECT * FROM can_jobrole ORDER BY value ASC";
                                                 $result=mysqli_query($conn,$sql);
                                                 if(mysqli_num_rows($result)>0){
                                                 while($row=mysqli_fetch_array($result)){
@@ -154,7 +154,7 @@ include_once("includes/dbconfig.php");
                                             <?php echo'<option value="'.$rows['expected_job'].'">'.$rows['expected_job'].'</option>';?>
                                             <option value="">Select Expected Job</option>
                                         <?php
-                                            $sql="SELECT * FROM can_jobexpect";
+                                            $sql="SELECT * FROM can_jobexpect ORDER BY value ASC";
                                             $result=mysqli_query($conn,$sql);
                                             if(mysqli_num_rows($result)>0){
                                             while($row=mysqli_fetch_array($result)){

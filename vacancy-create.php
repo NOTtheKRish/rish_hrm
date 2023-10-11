@@ -79,7 +79,7 @@ include_once("includes/dbconfig.php");
                                         <div class="form-input">
                                             <select class="form-control" name="jobrole">
                                                 <?php
-                                                    $sql="SELECT * FROM can_jobrole";
+                                                    $sql="SELECT * FROM can_jobrole ORDER BY value ASC";
                                                     $result=mysqli_query($conn,$sql);
                                                     if(mysqli_num_rows($result)>0){
                                                     while($row=mysqli_fetch_array($result)){

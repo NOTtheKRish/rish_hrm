@@ -68,8 +68,8 @@ include_once('includes/dbconfig.php');
                                         $count=($coun['calls'])+1;
                                     }
                                     // Data being Inserted into the Database
-                                    $entry_by=$_SESSION['userRel'];
-                                    $userId=$_SESSION['userId'];
+                                    $entry_by = $_SESSION['userRel'];
+                                    $userId = $_SESSION['userId'];
                                     date_default_timezone_set('Asia/Kolkata');
                                     $created_at = date('Y-m-d H:i:s');
                                     $sql="INSERT INTO calls (call_id,calltype,number,name,type,location,description,job_role,status,entry_by,user_id,created_at)
@@ -179,12 +179,12 @@ include_once('includes/dbconfig.php');
                                                                     <select class="form-control" name="jobrole" onchange="this.form.submit();">
                                                                         <option value="">Job Role</option>';
                                                                         <?php
-                                                                            $sql="SELECT value FROM can_jobrole";
+                                                                            $sql="SELECT value FROM can_jobrole ORDER by value ASC";
                                                                             $jobroles=mysqli_query($conn,$sql);
                                                                             foreach($jobroles as $jobrole){
                                                                                 echo'<option value="'.$jobrole['value'].'">'.$jobrole['value'].'</option>';
                                                                             }
-                                                                            ?>
+                                                                        ?>
                                                                     </select>
                                                                 </form>
                                                             </div>
@@ -295,7 +295,7 @@ include_once('includes/dbconfig.php');
                                             $userId=$_SESSION['userId'];
                                             $role=$_SESSION['id'];
                                         // Finding out the total number of data in the table
-                                        if($userRel==$userId || $role==2){
+                                        if($userRel==$userId || $role == 2){
                                             $sql = "SELECT * FROM calls WHERE entry_by='".$userRel."'";
                                         }else{
                                             $sql = "SELECT * FROM calls WHERE entry_by='".$userRel."' AND user_id='".$userId."'";
@@ -313,7 +313,7 @@ include_once('includes/dbconfig.php');
                                         // Determine maximum results for a page according to a page's result SQL limit
                                             $pagefirstvalue = ($page-1)*$pagereslimit;
                                         // Searching Phone Number
-                                        if($userRel==$userId){
+                                        if($userRel == $userId){
                                             if(isset($_GET['jobrole'])){
                                                 $jobrole = $_GET['jobrole'];
                                                 $sql = "SELECT * FROM calls WHERE entry_by='".$userRel."' AND job_role LIKE '%".$jobrole."%'";
@@ -532,7 +532,7 @@ include_once('includes/dbconfig.php');
                                     ?>
                                     <tbody>
                                         <tr>
-                                            <td><?php echo $row['call_id']; ?> </td>
+                                            <td><?php echo $row['id']; ?> </td>
                                             <td><?php echo $created_at; ?> </td>
                                             <td><?php echo $row['calltype']; ?></td>
                                             <td><?php echo $row['name']; ?> </td>

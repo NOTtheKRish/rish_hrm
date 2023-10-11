@@ -73,7 +73,7 @@ include_once("includes/dbconfig.php");
                                         <div class="form-input my-2">
                                             <select name="job_role" class="form-control form-select" id="job_role">
                                                 <?php
-                                                    $sql="SELECT * FROM can_jobrole";
+                                                    $sql="SELECT * FROM can_jobrole ORDER BY value ASC";
                                                     $jobroles=mysqli_query($conn,$sql);
                                                     foreach ($jobroles as $jobrole) {
                                                 ?>

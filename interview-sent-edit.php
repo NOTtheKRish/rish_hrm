@@ -86,7 +86,13 @@ include_once("includes/dbconfig.php");
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-4">Description
-                                    <textarea name="description" id="" cols="30" rows="3" class="form-control"><?php echo $row['description']; ?></textarea>
+                                    <textarea name="description" id="" cols="30" rows="3" class="form-control">
+                                        <?php
+                                            if(isset($row['description'])){
+                                                echo $row['description'];
+                                            }
+                                        ?>
+                                    </textarea>
                                 </div>
                             </div>
                             <br>

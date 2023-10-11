@@ -87,7 +87,7 @@ include_once("includes/dbconfig.php");
                                     <div class="form-input">
                                     <select name="qualification" class="form-control">
                                         <?php
-                                            $sql="SELECT * FROM can_qualification";
+                                            $sql="SELECT * FROM can_qualification ORDER BY value ASC";
                                             $result=mysqli_query($conn,$sql);
                                             if(mysqli_num_rows($result)>0){
                                             while($row=mysqli_fetch_array($result)){
@@ -117,7 +117,7 @@ include_once("includes/dbconfig.php");
                                     <div class="form-input">
                                         <select name="jobrole" class="form-control">
                                             <?php
-                                                $sql="SELECT * FROM can_jobrole";
+                                                $sql="SELECT * FROM can_jobrole ORDER BY value ASC";
                                                 $result=mysqli_query($conn,$sql);
                                                 if(mysqli_num_rows($result)>0){
                                                 while($row=mysqli_fetch_array($result)){
@@ -131,7 +131,7 @@ include_once("includes/dbconfig.php");
                                     <div class="form-input">
                                     <select name="expected_job" class="form-control">
                                         <?php
-                                            $sql="SELECT * FROM can_jobexpect";
+                                            $sql="SELECT * FROM can_jobexpect ORDER BY value ASC";
                                             $result=mysqli_query($conn,$sql);
                                             if(mysqli_num_rows($result)>0){
                                             while($row=mysqli_fetch_array($result)){

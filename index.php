@@ -75,7 +75,7 @@ include_once('includes/dbconfig.php');
                                             <div class="h5 mb-0 font-weight-bold text-gray-900">
                                                 <?php
                                                     $userId=$_SESSION['userId'];
-                                                    $query = "SELECT * FROM candidates WHERE entry_by ='".$_SESSION['userRel']."' AND user_id='".$userId."'";
+                                                    $query = "SELECT * FROM candidates WHERE entry_by='".$_SESSION['userRel']."'";
                                                     $query_run = mysqli_query($conn,$query);
 
                                                     $row = mysqli_num_rows($query_run);
@@ -121,7 +121,7 @@ include_once('includes/dbconfig.php');
                                                     <div class="col mr-2">
                                                         <div class="h6 font-weight-bold text-primary text-uppercase mb-1">Total JOBS</div>
                                                         <div class="h5 mb-0 font-weight-bold text-gray-900">';
-                                                                $query = "SELECT * FROM jobs WHERE entry_by='".$_SESSION['userRel']."' AND user_id='".$userId."'";
+                                                                $query = "SELECT * FROM jobs WHERE entry_by='".$_SESSION['userRel']."'";
                                                                 $query_run = mysqli_query($conn,$query);
 
                                                                 $row = mysqli_num_rows($query_run);

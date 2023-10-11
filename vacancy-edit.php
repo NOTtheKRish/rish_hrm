@@ -66,7 +66,7 @@ include_once("includes/dbconfig.php");
                                                 <?php echo'<option value="'.$rows['job_role'].'">'.$rows['job_role'].'</option>';?>
                                                 <option value="">Select Job Role</option>
                                                 <?php
-                                                    $sql="SELECT * FROM can_jobrole";
+                                                    $sql="SELECT * FROM can_jobrole ORDER BY value ASC";
                                                     $result=mysqli_query($conn,$sql);
                                                     if(mysqli_num_rows($result)>0){
                                                     while($row=mysqli_fetch_array($result)){
