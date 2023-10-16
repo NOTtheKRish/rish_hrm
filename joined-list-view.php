@@ -69,7 +69,7 @@ include_once("includes/dbconfig.php");
                                                 if(mysqli_num_rows($result)>0){
                                                 while($rows=mysqli_fetch_array($result)){
                                                 ?>
-                                                <?php echo '<input style="color:#000;" type="text" readonly class="form-control-plaintext" name="can_name" value="C-'.$rows['name'].'"></td>';?>
+                                                <?php echo '<input style="color:#000;" type="text" readonly class="form-control-plaintext" name="can_name" value="'.$rows['name'].'"></td>';?>
                                         </div>
                                     </div>
                                     <div class="form-group row">

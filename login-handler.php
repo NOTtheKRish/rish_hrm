@@ -45,17 +45,11 @@
                             'status' => "success",
                             'message' => "Authentication Successful!",
                         ];
-                    //   echo'<script type="text/javascript">
-                    //       window.location.href="index.php";
-                    //   </script>';
                   }else{
                     $response = [
                         'status' => "error",
                         'message' => "Invalid Password",
                     ];
-                    //   echo'<script type="text/javascript">
-                    //       alert("Invalid Password!");
-                    //   </script>';
                   }
               }
            }else{
@@ -68,8 +62,4 @@
         }
 
         echo json_encode($response);
-
-    // if(isset($_POST['username'])){
-        
-    // }
 ?>

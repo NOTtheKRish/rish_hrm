@@ -228,7 +228,7 @@ include_once('includes/dbconfig.php');
                                                     <select class="form-control" name="jobrole" style="border: 2px solid #0070ff; border-radius: 3px;">
                                                         <option value="">Select JOB Role</option>
                                                         <?php
-                                                            $sql="SELECT * FROM can_jobrole";
+                                                            $sql="SELECT * FROM can_jobrole ORDER BY value ASC";
                                                             $result=mysqli_query($conn,$sql);
                                                             if(mysqli_num_rows($result)>0){
                                                             while($row=mysqli_fetch_array($result)){
